@@ -175,3 +175,20 @@ pub(crate) trait Plotter {
 
     fn wait(&mut self);
 }
+
+struct Lerp {
+    v0: f64,
+    v1: f64,
+}
+
+impl Lerp {
+    #[inline]
+    fn new(v0: f64, v1: f64) -> Self {
+        Self { v0, v1 }
+    }
+
+    #[inline]
+    fn eval(&self, t: f64) -> f64 {
+        self.v0 + t * (self.v1 - self.v0)
+    }
+}
